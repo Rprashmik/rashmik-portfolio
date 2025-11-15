@@ -7,235 +7,290 @@
   <meta name="description" content="Rashmik Parmar — DevOps Engineer. CI/CD, Kubernetes, Docker, AWS, Monitoring." />
   <style>
     :root{
-      --bg:#071026; --card:#071428; --muted:#9fb0c8; --accent:#39d0ff; --glass:rgba(255,255,255,0.04);
-      --radius:14px; --maxw:1100px; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      --bg:#071023; --panel:#07122a; --muted:#9fb0c8; --accent:#39d0ff; --good:#33d69f; --warn:#ffb86b; --bad:#ff6b6b;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#051023 0%,var(--bg) 100%);color:#e8f2fb}
-    a{color:var(--accent);text-decoration:none}
-    .container{max-width:var(--maxw);margin:28px auto;padding:20px}
-    /* canvas background */
-    #bgcanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.9}
-    header{display:flex;align-items:center;gap:20px;z-index:10;position:relative}
-    .logo{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6cf);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022; font-size:24px}
-    h1{margin:0;font-size:22px}
-    .lead{color:var(--muted);margin-top:6px}
-    nav{margin-left:auto;display:flex;gap:10px;align-items:center}
-    nav a.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);font-size:13px}
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center;margin-top:18px;position:relative;z-index:5}
-    .intro{padding:22px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);box-shadow: 0 10px 30px rgba(2,8,20,0.6)}
-    .intro h2{margin:0 0 8px;font-size:28px}
-    .intro p{margin:0;color:var(--muted)}
-    .cta{margin-top:14px;display:flex;gap:10px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),#6cf);color:#021; padding:10px 14px;border-radius:12px;font-weight:600;border:none}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border-radius:12px}
-    /* 3D hero card */
-    .card-3d{width:100%;height:260px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:20px;transform-style:preserve-3d;transition:transform 300ms cubic-bezier(.2,.9,.3,1);box-shadow:0 12px 40px rgba(2,6,20,0.6)}
-    .card-3d .tag{background:rgba(0,0,0,0.25);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);display:inline-block;margin-bottom:12px}
-    .card-3d h3{margin:0 0 8px}
-    .card-3d p{margin:0;color:var(--muted)}
-    /* projects grid */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-    .proj{border-radius:14px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));transform:translateZ(0);transition:transform 220ms, box-shadow 220ms}
-    .proj h4{margin:0 0 6px}
-    .proj p{margin:0;color:var(--muted);font-size:14px}
-    .proj:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 40px rgba(2,8,20,0.6)}
-    /* skill bars */
-    .skills{display:flex;flex-direction:column;gap:10px}
-    .skill-row{display:flex;align-items:center;gap:12px}
-    .skill-name{width:120px;color:var(--muted);font-size:14px}
-    .bar{flex:1;height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#6cf);border-radius:999px;transition:width 1.2s ease}
-    /* footer */
-    footer{margin-top:30px;color:var(--muted);text-align:center;padding-bottom:40px}
-    /* reveal animations */
-    .reveal{opacity:0;transform:translateY(12px);transition:all 700ms ease}
-    .reveal.visible{opacity:1;transform:none}
-    /* responsive */
-    @media (max-width:980px){.hero{grid-template-columns:1fr} .grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.grid{grid-template-columns:1fr} nav{display:none} .card-3d{height:220px}}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#041122 0%,var(--bg) 100%);color:#e8f2fb}
+    a{color:var(--accent)}
+    .wrap{max-width:1150px;margin:22px auto;padding:18px;position:relative}
+    header{display:flex;gap:16px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6cf);display:flex;align-items:center;justify-content:center;color:#021124;font-weight:700}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:3px 0 0;color:var(--muted);font-size:13px}
+    .layout{display:grid;grid-template-columns: 1fr 460px;gap:18px;margin-top:18px}
+    @media(max-width:980px){.layout{grid-template-columns:1fr;}.right{order:2}}
+    /* terminal panel */
+    .terminal{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;min-height:520px;box-shadow:0 10px 30px rgba(2,8,20,0.6);font-family:monospace;overflow:hidden;position:relative}
+    .term-output{white-space:pre-wrap;font-size:13px;line-height:1.45;color:#bfeeff;max-height:420px;overflow:auto;padding-right:8px}
+    .term-prompt{display:flex;gap:8px;align-items:center;margin-top:12px}
+    .prompt-bubble{background:#00121a;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);color:var(--muted);font-size:13px}
+    .cmd-input{flex:1;background:transparent;border:1px dashed rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:#eaf6ff;outline:none;font-family:monospace}
+    .hint{font-size:12px;color:var(--muted);margin-top:8px}
+    /* right dashboard */
+    .right{display:flex;flex-direction:column;gap:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px}
+    .card h3{margin:0 0 8px}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .stat{padding:10px;border-radius:10px;background:rgba(255,255,255,0.01);font-size:14px}
+    .gauge{height:72px;display:flex;align-items:center;gap:12px}
+    .gauge .bar{flex:1;height:12px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+    .gauge .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#76d7ff);border-radius:999px;transition:width 1000ms cubic-bezier(.2,.9,.3,1)}
+    .badge{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.25);font-size:13px;color:var(--muted)}
+    .service-list{display:flex;flex-direction:column;gap:8px}
+    .svc{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.01)}
+    .status-dot{width:10px;height:10px;border-radius:999px;display:inline-block;margin-right:8px}
+    .status-ok{background:var(--good)} .status-warn{background:var(--warn)} .status-bad{background:var(--bad)}
+    /* projects / sections area */
+    .section{margin-top:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:12px;border-radius:10px}
+    .section h4{margin:0 0 8px}
+    .small{font-size:13px;color:var(--muted)}
+    /* footer small */
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    /* scrollbars small */
+    .term-output::-webkit-scrollbar{width:8px;height:8px}
+    .term-output::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.03);border-radius:8px}
+    /* clickable link style */
+    .link{color:var(--accent);cursor:pointer}
   </style>
 </head>
 <body>
-  <!-- canvas background -->
-  <canvas id="bgcanvas"></canvas>
-
-  <div class="container">
+  <div class="wrap">
     <header>
       <div class="logo">RP</div>
       <div>
         <h1>Rashmik Parmar</h1>
-        <div class="lead">System Administrator & DevOps Engineer • AWS • Kubernetes • CI/CD • Monitoring</div>
+        <p class="lead">System Administrator & DevOps Engineer • AWS • Kubernetes • CI/CD • Monitoring</p>
       </div>
-      <nav>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#skills">Skills</a>
-        <a class="btn" href="#contact">Contact</a>
-        <a class="btn" href="#resume">Resume</a>
-      </nav>
     </header>
 
-    <section class="hero">
-      <div class="intro reveal" id="intro">
-        <h2>DevOps Engineer — Build • Automate • Monitor</h2>
-        <p style="margin-top:10px;color:var(--muted)">I architect and maintain scalable infrastructure, automate CI/CD pipelines and ensure highly available production systems.</p>
-        <div class="cta">
-          <a class="btn-primary" href="#contact">Hire / Contact</a>
-          <a class="btn-ghost" id="downloadResume" href="Rashmik_Parmar_Resume.pdf" download>Download Resume</a>
-        </div>
+    <div class="layout">
+      <!-- left: terminal -->
+      <div class="terminal" aria-live="polite">
+        <div id="termOutput" class="term-output" tabindex="0"></div>
 
-        <div style="margin-top:18px" class="skills">
-          <div class="skill-row"><div class="skill-name">CI/CD</div><div class="bar"><i data-width="85%"></i></div></div>
-          <div class="skill-row"><div class="skill-name">Docker & K8s</div><div class="bar"><i data-width="88%"></i></div></div>
-          <div class="skill-row"><div class="skill-name">Monitoring</div><div class="bar"><i data-width="82%"></i></div></div>
+        <div class="term-prompt" aria-hidden="false">
+          <div class="prompt-bubble">$</div>
+          <input id="cmdInput" class="cmd-input" placeholder="Try commands: help, projects, experience, resume, blog, contact" autocomplete="off" />
         </div>
+        <div class="hint">Tip: Type <span class="badge">help</span> and press Enter — or click the dashboard actions on the right.</div>
       </div>
 
-      <div class="card-3d" id="card3d">
-        <span class="tag">DevOps • Linux • AWS</span>
-        <h3>3D-like Interactive Card</h3>
-        <p style="color:var(--muted)">Move your mouse over this card — it reacts with a 3D tilt and mild parallax. Use this as your hero highlight.</p>
-      </div>
-    </section>
-
-    <section id="projects" class="reveal" style="margin-top:26px">
-      <h2>Featured Projects</h2>
-      <div class="grid" style="margin-top:12px">
-        <div class="proj">
-          <h4>CI/CD Pipeline — React → Docker → Jenkins</h4>
-          <p>Automated build, image publish and deploy to EC2 using Jenkins + Ansible.</p>
+      <!-- right: dashboard -->
+      <aside class="right">
+        <div class="card">
+          <h3>Live Snapshot</h3>
+          <div class="stat-grid">
+            <div class="stat">
+              <div class="small">CPU Usage</div>
+              <div class="gauge" aria-hidden="true">
+                <div class="bar"><i id="cpuBar" data-val="32%"></i></div>
+                <div style="width:56px;text-align:right;font-weight:600" id="cpuVal">32%</div>
+              </div>
+              <div class="small">Mock: simulated server metrics</div>
+            </div>
+            <div class="stat">
+              <div class="small">Memory</div>
+              <div class="gauge">
+                <div class="bar"><i id="memBar" data-val="58%"></i></div>
+                <div style="width:56px;text-align:right;font-weight:600" id="memVal">58%</div>
+              </div>
+              <div class="small">Shows typical prod load</div>
+            </div>
+          </div>
         </div>
-        <div class="proj">
-          <h4>Kubernetes — Kubeadm & EKS</h4>
-          <p>Cluster setup (kubeadm) and EKS deployments using ECR images and Helm charts.</p>
-        </div>
-        <div class="proj">
-          <h4>Monitoring — Prometheus & Grafana</h4>
-          <p>Monitoring stack, alerting rules and 50+ Node Exporter integrations.</p>
-        </div>
-      </div>
-    </section>
 
-    <section id="skills" class="reveal" style="margin-top:22px">
-      <h2>Skills & Tools</h2>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-        <div class="proj" style="flex:1 1 320px"><h4>AWS & Cloud</h4><p class="meta">EC2, S3, RDS, EKS, IAM, CloudWatch</p></div>
-        <div class="proj" style="flex:1 1 320px"><h4>Containers</h4><p class="meta">Docker, Compose, Kubernetes (kubeadm, EKS)</p></div>
-        <div class="proj" style="flex:1 1 320px"><h4>CI/CD & Quality</h4><p class="meta">Jenkins, GitLab CI, SonarQube</p></div>
-      </div>
-    </section>
+        <div class="card">
+          <h3>CI / CD</h3>
+          <div class="service-list">
+            <div class="svc"><div><span class="status-dot status-ok"></span> Jenkins</div><div class="small">last build: <strong id="jenkinsLast">5m ago</strong></div></div>
+            <div class="svc"><div><span class="status-dot status-ok"></span> GitLab CI</div><div class="small">pipelines: <strong id="gitlabP">passed</strong></div></div>
+            <div class="svc"><div><span class="status-dot status-warn"></span> SonarQube</div><div class="small">quality: <strong id="sonarQ">B</strong></div></div>
+          </div>
+        </div>
 
-    <section id="contact" class="reveal" style="margin-top:22px">
-      <h2>Contact</h2>
-      <p class="meta">Email: <a href="mailto:rashmikparmar11897@gmail.com">rashmikparmar11897@gmail.com</a> • LinkedIn: <a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></p>
-    </section>
+        <div class="card">
+          <h3>Kubernetes</h3>
+          <div class="small">Cluster: <strong>EKS (prod)</strong></div>
+          <div style="height:10px"></div>
+          <div class="svc"><div><span class="status-dot status-ok"></span> pods: <strong id="podsTotal">14</strong></div><div class="small">running: <strong id="podsRunning">14</strong></div></div>
+          <div style="height:8px"></div>
+          <div class="svc"><div><span class="status-dot status-warn"></span> ingress</div><div class="small">errors: <strong id="ingErr">0</strong></div></div>
+        </div>
+
+        <div class="card">
+          <h3>AWS</h3>
+          <div class="small">EC2: <strong id="ec2Cnt">3</strong> • RDS: <strong id="rdsCnt">1</strong> • S3: <strong id="s3Cnt">12</strong></div>
+          <div style="height:8px"></div>
+          <div class="small">Auto-scaling: <strong id="asg">enabled</strong></div>
+          <div style="height:10px"></div>
+          <div><a class="link" id="openResume" href="Rashmik_Parmar_Resume.pdf" target="_blank">Open Resume (PDF)</a></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- sections that terminal can show -->
+    <div id="sections" style="margin-top:16px">
+      <div id="projects" class="section" aria-hidden="true">
+        <h4>Projects</h4>
+        <p class="small">CI/CD Pipeline — React → Docker → Jenkins / Kubernetes (kubeadm & EKS) / Monitoring — Prometheus & Grafana / Magento on AWS</p>
+        <ul class="small">
+          <li>Cloudracing (AWS): EC2, RDS (SSL), Laravel, CloudWatch dashboards</li>
+          <li>GetMyCigar (Magento - AWS): Nginx, Elasticsearch, autoscaling, logs</li>
+          <li>Kentron (GCP): Node.js CI/CD pipeline, Dockerized deployment</li>
+          <li>WhizzQ: Docker + LB, MariaDB upgrades, monitoring & alerts</li>
+        </ul>
+      </div>
+
+      <div id="experience" class="section" aria-hidden="true">
+        <h4>Experience</h4>
+        <p class="small"><strong>SVAAPTA IT-ALLY SOLUTIONS PVT LTD</strong> — System Administrator (Present - July 2022)</p>
+        <ul class="small">
+          <li>Managed Linux infra, LDAP & Azure AD, Microsoft 365 admin</li>
+          <li>Deployed AWS (EC2, S3, RDS, EKS), containerized apps with Docker</li>
+          <li>Built CI/CD pipelines (Jenkins, GitLab) and integrated SonarQube</li>
+          <li>Monitoring with Prometheus & Grafana, alerts for CPU/memory</li>
+        </ul>
+      </div>
+
+      <div id="contact" class="section" aria-hidden="true">
+        <h4>Contact</h4>
+        <p class="small">Email: <a href="mailto:rashmikparmar11897@gmail.com">rashmikparmar11897@gmail.com</a></p>
+        <p class="small">LinkedIn: <a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></p>
+        <p class="small">GitHub: <a href="https://github.com/Rprashmik" target="_blank">github.com/Rprashmik</a></p>
+      </div>
+    </div>
 
     <footer>
-      <p>Built with ❤ • Interactive 3D-like effects (no heavy libs) — Customize further on request.</p>
+      <div class="small">Tip: Type <code>help</code>, <code>projects</code>, <code>experience</code>, <code>resume</code>, or <code>contact</code> in the terminal above.</div>
     </footer>
   </div>
 
   <script>
-    /* -------------------------
-       Background particles canvas
-       ------------------------- */
-    (function(){
-      const canvas = document.getElementById('bgcanvas');
-      const ctx = canvas.getContext('2d');
-      let w = canvas.width = innerWidth;
-      let h = canvas.height = innerHeight;
-      const TAU = Math.PI*2;
-      let particles = [];
-      const PCOUNT = Math.round((w*h)/90000); // density
-      function rand(min,max){return Math.random()*(max-min)+min}
-      function init(){
-        particles = [];
-        for(let i=0;i<PCOUNT;i++){
-          particles.push({
-            x: rand(0,w), y: rand(0,h), r: rand(0.6,2.4),
-            vx: rand(-0.25,0.25), vy: rand(-0.2,0.2),
-            hue: rand(185,210), life: rand(0.2,1)
-          });
-        }
+    // Helper: typewriter into an element
+    function typeTo(el, text, speed=20, newline=true){
+      return new Promise(resolve=>{
+        let i=0;
+        const step = ()=>{
+          if(i<=text.length-1){
+            el.textContent += text[i++];
+            el.scrollTop = el.scrollHeight;
+            setTimeout(step, speed);
+          } else {
+            if(newline) el.textContent += "\\n";
+            resolve();
+          }
+        };
+        step();
+      });
+    }
+
+    // initial terminal demo script
+    (async function(){
+      const out = document.getElementById('termOutput');
+      const demo = [
+        {t:"$ whoami", r:"rashmik"},
+        {t:"$ uname -a", r:"Linux dev-box 5.15.0-... #1 SMP x86_64 GNU/Linux"},
+        {t:"$ docker ps --format '{{.Names}}\\t{{.Status}}'", r:"web_app\tUp 2 hours\\njenkins\tUp 5 minutes"},
+        {t:"$ kubectl get pods --namespace=prod", r:"NAME                    READY   STATUS    RESTARTS\\nweb-5d7c9c8f    1/1     Running   0\\napi-6f5d8b4b    1/1     Running   0"},
+        {t:"$ terraform plan -target=module.ec2", r:"Plan: 2 to add, 0 to change, 0 to destroy"},
+        {t:"$ echo 'Type help for available commands'", r:""}
+      ];
+      for(const s of demo){
+        await typeTo(out, s.t + "\\n", 20, false);
+        out.textContent += "\\n";
+        if(s.r) await typeTo(out, s.r + "\\n", 12, true);
+        await new Promise(r=>setTimeout(r, 450));
       }
-      function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;init()}
-      window.addEventListener('resize', resize);
-      init();
-      function draw(){
-        ctx.clearRect(0,0,w,h);
-        // gradient background subtle
-        const g = ctx.createLinearGradient(0,0,0,h);
-        g.addColorStop(0, 'rgba(6,12,25,0.6)');
-        g.addColorStop(1, 'rgba(4,8,18,0.6)');
-        ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
-        for(const p of particles){
-          p.x += p.vx; p.y += p.vy;
-          if(p.x< -50) p.x=w+50; if(p.x> w+50) p.x=-50;
-          if(p.y< -50) p.y=h+50; if(p.y> h+50) p.y=-50;
-          ctx.beginPath();
-          ctx.fillStyle = `hsla(${p.hue},70%,60%,${0.08 + p.life*0.2})`;
-          ctx.arc(p.x, p.y, p.r, 0, TAU);
-          ctx.fill();
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-      // subtle parallax on mouse
-      let mx=0,my=0;
-      window.addEventListener('mousemove', e=>{mx = (e.clientX - w/2)/w; my = (e.clientY - h/2)/h; for(let i=0;i<particles.length;i++){particles[i].x += mx*0.3; particles[i].y += my*0.2}})
+      await typeTo(out, "$", 10, false);
     })();
 
-    /* -------------------------
-       3D tilt for hero card
-       ------------------------- */
+    // simple command handler
     (function(){
-      const card = document.getElementById('card3d');
-      if(!card) return;
-      const rect = ()=>card.getBoundingClientRect();
-      function onMove(e){
-        const r = rect();
-        const cx = r.left + r.width/2;
-        const cy = r.top + r.height/2;
-        const dx = (e.clientX - cx);
-        const dy = (e.clientY - cy);
-        const rx = (-dy / r.height) * 12; // rotateX
-        const ry = (dx / r.width) * 12;   // rotateY
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+      const input = document.getElementById('cmdInput');
+      const out = document.getElementById('termOutput');
+      const sections = {projects:document.getElementById('projects'), experience:document.getElementById('experience'), contact:document.getElementById('contact')};
+      function printLine(txt){ out.textContent += txt + "\\n"; out.scrollTop = out.scrollHeight; }
+      function showSection(id){
+        // basic: reveal element and scroll to it
+        if(!sections[id]){ printLine("Unknown section: " + id); return; }
+        sections[id].removeAttribute('aria-hidden');
+        sections[id].scrollIntoView({behavior:'smooth', block:'start'});
+        printLine("$ opened " + id);
       }
-      function reset(){ card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)'; }
-      card.addEventListener('mousemove', onMove);
-      card.addEventListener('mouseleave', reset);
-      card.addEventListener('mouseenter', ()=>{card.style.transition = 'transform 120ms';});
-    })();
-
-    /* -------------------------
-       Reveal on scroll
-       ------------------------- */
-    (function(){
-      const els = document.querySelectorAll('.reveal');
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(en=>{
-          if(en.isIntersecting) en.target.classList.add('visible');
-        });
-      }, {threshold:0.12});
-      els.forEach(el=>obs.observe(el));
-      // animate skill bars
-      window.addEventListener('load', ()=>{document.querySelectorAll('.bar > i').forEach(i=>{setTimeout(()=>i.style.width = i.dataset.width || '70%',200)})});
-    })();
-
-    /* -------------------------
-       Smooth anchor scroll
-       ------------------------- */
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length>1){
-          e.preventDefault();
-          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+      input.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter'){
+          const v = input.value.trim();
+          if(!v) return;
+          printLine("$ " + v);
+          const parts = v.split(' ').filter(Boolean);
+          const cmd = parts[0].toLowerCase();
+          if(cmd==='help'){
+            printLine("Available commands: help, projects, experience, resume, contact, clear, stats");
+            printLine("Try: projects");
+          } else if(cmd==='projects'){
+            showSection('projects');
+          } else if(cmd==='experience'){
+            showSection('experience');
+          } else if(cmd==='contact'){
+            showSection('contact');
+          } else if(cmd==='resume'){
+            // open resume in new tab
+            window.open('Rashmik_Parmar_Resume.pdf', '_blank');
+            printLine("Opening resume.pdf ...");
+          } else if(cmd==='clear'){
+            out.textContent = '';
+          } else if(cmd==='stats'){
+            // print simulated JSON stats
+            printLine(JSON.stringify({
+              cpu: document.getElementById('cpuVal').textContent,
+              mem: document.getElementById('memVal').textContent,
+              pods: document.getElementById('podsTotal').textContent
+            }, null, 2));
+          } else {
+            printLine("Command not found: " + cmd + "  (type help)");
+          }
+          input.value = '';
         }
       });
-    });
+    })();
+
+    // animate gauges and periodic updates (simulated)
+    (function(){
+      const cpuBar = document.getElementById('cpuBar'), memBar = document.getElementById('memBar');
+      const cpuVal = document.getElementById('cpuVal'), memVal = document.getElementById('memVal');
+      const podsTotal = document.getElementById('podsTotal'), podsRunning = document.getElementById('podsRunning');
+      const jenk = document.getElementById('jenkinsLast'), gitlabP = document.getElementById('gitlabP'), sonarQ = document.getElementById('sonarQ');
+      const ec2Cnt = document.getElementById('ec2Cnt'), rdsCnt = document.getElementById('rdsCnt'), s3Cnt = document.getElementById('s3Cnt');
+
+      function setGauge(el, valStr){
+        el.style.width = valStr;
+      }
+      function randomInt(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+      function updateStats(){
+        const cpu = randomInt(22,62);
+        const mem = randomInt(40,78);
+        setGauge(cpuBar, cpu + "%"); cpuVal.textContent = cpu + "%";
+        setGauge(memBar, mem + "%"); memVal.textContent = mem + "%";
+        // pods
+        const pods = 14; podsTotal.textContent = pods; podsRunning.textContent = pods;
+        // CI status rotate
+        const last = randomInt(1,10) + "m ago"; jenk.textContent = last;
+        const gp = (Math.random()>0.15) ? 'passed' : 'failed'; gitlabP.textContent = gp;
+        sonarQ.textContent = ['A','B','C'][randomInt(0,2)];
+        // aws counts randomize slightly
+        ec2Cnt.textContent = 3; rdsCnt.textContent = 1; s3Cnt.textContent = 12;
+      }
+      updateStats();
+      setInterval(updateStats, 7000);
+      // reveal bars on load (smooth)
+      window.addEventListener('load', ()=>{ setTimeout(()=>{ cpuBar.style.width = cpuBar.dataset.val || '30%'; memBar.style.width = memBar.dataset.val || '50%'; }, 300) });
+    })();
+
+    // accessible focus for term output
+    document.getElementById('termOutput').addEventListener('click', ()=> document.getElementById('cmdInput').focus());
   </script>
 </body>
 </html>
