@@ -1,0 +1,227 @@
+<!--
+DevOps Portfolio - Single-file static site
+File: devops-portfolio.html
+How to use:
+1. Save this file as `index.html` locally.
+2. Open in browser to preview.
+3. To deploy:
+   - GitHub Pages: push to a repo's main branch and enable Pages (root -> index.html).
+   - Netlify/Vercel: drag-and-drop the file or connect the repo.
+4. Customize: search for `<!-- CUSTOMIZE` comments inside the file.
+
+If you want this converted to a React project or WordPress theme, tell me and I'll generate those files.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rashmik — DevOps Engineer</title>
+  <meta name="description" content="DevOps Engineer portfolio — CI/CD, Kubernetes, Docker, AWS, Monitoring" />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#07c; --muted:#98a8c0; --glass: rgba(255,255,255,0.03);
+      --radius:14px; --max-width:1050px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{background:linear-gradient(180deg,#071021 0%,var(--bg) 100%); color:#e6eef8; margin:0; -webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--max-width); margin:36px auto; padding:28px}
+    header{display:flex; gap:24px; align-items:center}
+    .avatar{width:110px;height:110px;border-radius:18px;background:linear-gradient(135deg,var(--accent),#6cf);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124;font-size:42px}
+    h1{margin:0; font-size:28px}
+    p.lead{margin:8px 0 0; color:var(--muted)}
+
+    nav{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+    a.btn{background:var(--glass); padding:8px 12px; border-radius:12px; color:inherit; text-decoration:none; font-size:14px}
+
+    .grid{display:grid; grid-template-columns: 1fr 360px; gap:22px; margin-top:22px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:var(--radius); box-shadow: 0 4px 18px rgba(2,6,23,0.6);}
+
+    /* left column */
+    .section{margin-bottom:18px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:#08101a;padding:6px 10px;border-radius:10px;font-size:13px;color:var(--muted)}
+
+    .projects{display:grid;grid-template-columns:1fr;gap:12px}
+    .project{padding:12px;border-radius:12px;background:rgba(255,255,255,0.02)}
+    .project h4{margin:0 0 6px}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+    .project a{display:inline-block;margin-top:8px;text-decoration:none;color:var(--accent)}
+
+    /* right column */
+    .sidebar h3{margin-top:0}
+    .meta{font-size:14px;color:var(--muted)}
+    .contact a{display:block;margin-top:8px;color:var(--accent);text-decoration:none}
+
+    footer{margin-top:28px;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .avatar{width:88px;height:88px;font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="avatar">RP</div>
+      <div>
+        <h1>Rashmik Parmar — DevOps & System Administrator</h1>
+        <p class="lead">System Administrator & DevOps Engineer with 3+ years of experience in AWS, Linux, CI/CD, Docker, Kubernetes and Monitoring.</p>
+        <nav>
+          <a class="btn" href="#projects">Projects</a>
+          <a class="btn" href="#skills">Skills</a>
+          <a class="btn" href="#contact">Contact</a>
+          <a class="btn" href="#resume">Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="card section" id="about">
+          <h2>About Me</h2>
+          <p class="meta">Highly skilled System Administrator & DevOps Engineer with 3+ years of experience in managing Linux-based environments, AWS cloud, automation (Bash/PowerShell), CI/CD pipelines (Jenkins, GitLab, GitHub), Docker, Kubernetes, monitoring (Prometheus + Grafana), and securing infrastructure.</p>
+        </section>
+
+        <section class="card section" id="experience">
+          <h2>Professional Experience</h2>
+          <div class="project">
+            <h4>System Administrator — SVAAPTA IT-ALLY SOLUTIONS PVT LTD</h4>
+            <p class="meta">Present - July 2022</p>
+            <ul>
+              <li>Managed Linux infrastructure and supported 50+ users; administered LDAP and Azure AD for user management.</li>
+              <li>Administered Microsoft 365 and resolved Linux issues in staging and production environments.</li>
+              <li>Deployed and managed AWS services (EC2, S3, RDS, EKS) integrated with Docker for scalable deployments.</li>
+              <li>Set up Grafana dashboards with Prometheus and Node Exporter; implemented alerting and performance tuning.</li>
+              <li>Built CI/CD pipelines using GitLab and Jenkins; integrated SonarQube for static code analysis.</li>
+              <li>Configured and secured Apache/Nginx with SSL using Nginx Proxy Manager; improved uptime to 99.9%.</li>
+              <li>Automated backups, monitoring, and networking tasks—reduced manual work by ~40% and deployment time by ~60%.</li>
+            </ul>
+          </div>
+
+          <div class="project">
+            <h4>Key Projects & Responsibilities</h4>
+            <ul>
+              <li>Cloudracing (AWS): EC2, RDS with SSL, Laravel setup, CloudWatch dashboards.</li>
+              <li>GetMyCigar (AWS): Magento on EC2 with Nginx, Elasticsearch, SSL, autoscaling and monitoring.</li>
+              <li>Kentron (GCP): Containerized Node.js app, GitHub→GCP CI/CD pipeline.</li>
+              <li>WhizzQ (AWS): Docker deployment, load balancer, MariaDB upgrades, logging and monitoring.</li>
+              <li>Kubernetes: Kubeadm cluster setup and EKS deployments (SuiteCRM, other apps).</li>
+              <li>Monitoring: Prometheus, Grafana, Node Exporter, Blackbox Exporter, Alertmanager rules (CPU alerts).</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card section" id="projects">
+          <h2>Featured Projects</h2>
+          <div class="projects">
+            <article class="project">
+              <h4>Cloudracing Project – AWS</h4>
+              <p>EC2, RDS with SSL, Laravel setup, Amazon Linux dependencies, CloudWatch dashboard creation.</p>
+            </article>
+            <article class="project">
+              <h4>GetMyCigar – AWS Magento Deployment</h4>
+              <p>Nginx, Elasticsearch, Magento setup with SSL, autoscaling, cloudwatch monitoring.</p>
+            </article>
+            <article class="project">
+              <h4>Kentron – GCP CI/CD</h4>
+              <p>Node.js project containerized, GitHub → GCP pipeline setup, automated deployment.</p>
+            </article>
+            <article class="project">
+              <h4>WhizzQ – AWS Production Setup</h4>
+              <p>Docker deployment, load balancer, MariaDB upgrade, log monitoring, CPU alerts.</p>
+            </article>
+            <article class="project">
+              <h4>Node.js Application – Jenkins CI/CD</h4>
+              <p>Automated build-test-deploy pipeline using Jenkins.</p>
+            </article>
+            <article class="project">
+              <h4>PHP 3‑Tier Application – AWS + Jenkins</h4>
+              <p>Frontend + Backend + Database on EC2 & RDS, CI/CD automation.</p>
+            </article>
+            <article class="project">
+              <h4>Kubernetes Deployments – Kubeadm & EKS</h4>
+              <p>SuiteCRM containerized, deployed on Kubeadm cluster & EKS using ECR images.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="card section" id="blog">
+          <h2>Writeups / How-tos</h2>
+          <ul>
+            <li><strong>How I set up Jenkins pipeline for a React app</strong> — Steps, Jenkinsfile, Ansible deploy playbook.</li>
+            <li><strong>Monitoring 50 servers with Prometheus</strong> — Docker Compose, scrape configs, Alertmanager rules.</li>
+            <li><strong>Kubernetes kubeadm cheatsheet</strong> — Commands to init master, join workers, common fixes.</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <aside class="card sidebar">
+        <div class="section">
+          <h3 id="skills">Skills</h3>
+          <div class="skills">
+            <span class="skill">AWS (EC2, RDS, S3, EKS, ECS, ECR)</span>
+            <span class="skill">GCP</span>
+            <span class="skill">Docker / Docker Compose</span>
+            <span class="skill">Kubernetes (Kubeadm / EKS)</span>
+            <span class="skill">Jenkins</span>
+            <span class="skill">GitLab CI/CD</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">SonarQube</span>
+            <span class="skill">Prometheus</span>
+            <span class="skill">Grafana</span>
+            <span class="skill">Node Exporter / Blackbox Exporter</span>
+            <span class="skill">MySQL / MariaDB / PostgreSQL / Aurora</span>
+            <span class="skill">Linux, Ubuntu, CentOS, RedHat</span>
+            <span class="skill">Nginx / Apache</span>
+            <span class="skill">Bash / Shell / PowerShell</span>
+            <span class="skill">Networking: DNS, DHCP, VPN, Firewall, SSL</span>
+            <span class="skill">VMware / Hyper-V / VirtualBox</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Quick Info</h3>
+          <p class="meta">Location: India</p>
+          <p class="meta" id="resume">Resume: <a href="#" style="color:var(--accent)">Download (PDF)</a></p>
+        </div>
+
+        <div class="section contact" id="contact">
+          <h3>Contact</h3>
+          <p class="meta">Email: <a href="mailto:rashmikparmar11897@gmail.com" class="contact-link">rashmik@example.com</a></p>
+          <p class="meta">LinkedIn: <a href="#" class="contact-link">https://www.linkedin.com/in/rashmik-parmar-173403178/</a></p>
+          <p class="meta">GitHub: <a href="#" class="contact-link">#</a></p>
+        </div>
+
+        <div class="section">
+          <h3>Availability</h3>
+          <p class="meta">Open to freelance & full-time roles. Immediate joiner for DevOps Engineer positions.</p>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <p>Built with ❤️ for DevOps — Customize this template or ask me to convert to React/WordPress.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Small script: smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href=a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const el=document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    })
+  </script>
+</body>
+</html>
