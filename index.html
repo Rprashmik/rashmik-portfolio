@@ -6,94 +6,114 @@
   <title>Rashmik Parmar — DevOps Engineer</title>
   <meta name="description" content="Rashmik Parmar — DevOps Engineer. CI/CD, Kubernetes, Docker, AWS, Monitoring." />
   <style>
-    /* -------------------------
-       Variables & base
-       ------------------------- */
+    /* =========================
+       Premium Cyber Purple + Neon Blue Theme
+       ========================= */
     :root{
-      --bg1:#081226; --bg2:#071022;
-      --glass: rgba(255,255,255,0.04);
-      --muted: #9fb0c8;
-      --accent: #5ee0ff;
-      --accent-2: #7a6cff;
-      --card-radius:20px;
-      --maxw:1100px;
+      --bg-a: #08091b;
+      --bg-b: #0d1026;
+      --glass: rgba(255,255,255,0.035);
+      --muted: #a9c0d6;
+      --accent-1: #4df0ff;   /* neon cyan */
+      --accent-2: #8a63ff;   /* violet */
+      --accent-3: #6fe8d6;   /* teal highlight */
+      --card-radius:18px;
+      --maxw:1180px;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color-scheme: dark;
-      color: #e8f5ff;
+      color: #e8f7ff;
+      -webkit-font-smoothing:antialiased;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background: linear-gradient(180deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased}
-    a{color:var(--accent)}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-a),var(--bg-b));}
+    a{color:var(--accent-1)}
     /* container */
-    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;position:relative;z-index:5}
-    header{display:flex;gap:16px;align-items:center}
-    .logo{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#032026;font-size:26px}
-    h1{margin:0;font-size:22px}
-    .tagline{color:var(--muted);margin-top:6px;font-size:14px}
-    nav{margin-left:auto;display:flex;gap:10px;align-items:center}
-    nav a{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);font-size:13px;text-decoration:none;color:inherit}
-    /* layout */
-    .layout{display:grid;grid-template-columns: 1fr 420px;gap:20px;margin-top:18px}
-    @media (max-width:980px){.layout{grid-template-columns:1fr}.right{order:2}}
-    /* glass hero */
-    .hero{
-      position:relative;padding:22px;border-radius:var(--card-radius);
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow: 0 20px 60px rgba(2,8,20,0.6);
-      transform-style:preserve-3d;overflow:hidden;
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;position:relative;z-index:6}
+    header{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:76px;height:76px;border-radius:16px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:900;color:#021025;font-size:28px;box-shadow:0 10px 30px rgba(9,11,26,0.6)
     }
-    .typewriter{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; font-size:15px; display:flex; gap:8px; align-items:center}
-    .typewriter .cursor{width:2px;height:20px;background:var(--accent);display:inline-block;animation:blink 900ms steps(2,end) infinite}
-    @keyframes blink{50%{opacity:0}}
-    .hero-content{display:flex;gap:18px;align-items:flex-start}
-    .hero-left{flex:1}
-    .hero-right{width:320px}
-    /* 3D glass card (right) */
-    .glass-card{padding:16px;border-radius:14px;background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(8px);box-shadow: 0 12px 40px rgba(2,8,20,0.6);transform-origin:center;transition:transform 220ms cubic-bezier(.2,.9,.3,1)}
-    .hero-title{font-size:20px;margin:0}
-    .lead{color:var(--muted);margin-top:8px}
-    .cta-row{margin-top:14px;display:flex;gap:10px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#012;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:12px;color:var(--muted);cursor:pointer}
-    /* floating blobs background (pseudo 3D depth) */
-    .bg-blobs{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.85}
-    .blob{position:absolute;border-radius:50%;filter:blur(28px);opacity:0.6;mix-blend-mode:screen; transform:translate3d(0,0,0)}
-    /* cards grid */
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-    @media (max-width:700px){.grid{grid-template-columns:1fr}}
-    .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);transition:transform 220ms, box-shadow 220ms;transform-style:preserve-3d}
-    .proj:hover{transform:translateY(-10px) rotateX(3deg) rotateY(-2deg);box-shadow:0 24px 60px rgba(2,8,20,0.6)}
+    h1{margin:0;font-size:22px;letter-spacing:0.2px}
+    .tagline{color:var(--muted);margin-top:6px;font-size:13px}
+    nav{margin-left:auto;display:flex;gap:10px;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));font-size:13px;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,0.02)}
+    /* layout */
+    .layout{display:grid;grid-template-columns:1fr 420px;gap:20px;margin-top:18px}
+    @media (max-width:980px){.layout{grid-template-columns:1fr}.right{order:2}}
+    /* hero glass with depth */
+    .hero{
+      position:relative;padding:26px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 24px 80px rgba(2,6,20,0.7);transform-style:preserve-3d;overflow:hidden;border:1px solid rgba(255,255,255,0.02)
+    }
+    .hero-inner{display:flex;gap:20px;align-items:flex-start}
+    .left{flex:1}
+    .right{width:380px}
+    .title{font-size:26px;margin:6px 0 8px}
+    .lead{color:var(--muted);font-size:15px}
+    .cta{display:flex;gap:12px;margin-top:14px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border:none;padding:10px 14px;border-radius:12px;color:#021;cursor:pointer;font-weight:700}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:12px;color:var(--muted);cursor:pointer}
+
+    /* floating neon border */
+    .neon-border{
+      position:absolute;inset:-2px;border-radius:22px;pointer-events:none;z-index:0;
+      box-shadow:0 0 40px rgba(138,99,255,0.08), inset 0 0 60px rgba(77,240,255,0.03);
+      mask: linear-gradient(#000,#000);
+    }
+
+    /* floating glowing blobs (3D feel) */
+    .bg-blobs{position:fixed;inset:0;z-index:1;pointer-events:none}
+    .blob{position:absolute;border-radius:50%;filter:blur(34px);opacity:0.85;mix-blend-mode:screen;transform:translate3d(0,0,0)}
+
+    /* right card */
+    .glass-card{padding:16px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(8px);box-shadow: 0 14px 40px rgba(2,6,20,0.6);transform-origin:center;transition:transform 220ms cubic-bezier(.2,.9,.3,1)}
+    .glass-card h3{margin:0 0 8px}
+    .stat{font-weight:700;font-size:18px}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* projects grid */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+    @media (max-width:760px){.grid{grid-template-columns:1fr}}
+    .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));backdrop-filter: blur(6px);transition:transform 260ms, box-shadow 260ms;transform-style:preserve-3d;border:1px solid rgba(255,255,255,0.02)}
+    .proj:hover{transform: translateY(-12px) rotateX(3deg) rotateY(-2deg);box-shadow: 0 30px 80px rgba(6,9,30,0.65)}
     .proj h4{margin:0 0 6px}
     .proj p{margin:0;color:var(--muted);font-size:14px}
-    /* skills */
-    .skills{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+
+    /* skill bars */
+    .skills{display:flex;flex-direction:column;gap:10px;margin-top:12px}
     .skill-row{display:flex;align-items:center;gap:12px}
-    .skill-name{width:120px;color:var(--muted);font-size:14px}
-    .bar{flex:1;height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px;transition:width 1000ms ease}
-    /* sections */
-    section.card{margin-top:18px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));backdrop-filter: blur(4px)}
-    section.card h3{margin:0}
-    /* contact */
-    .contact a{display:inline-block;margin-top:8px;color:var(--accent)}
-    /* subtle floating icons */
-    .icon-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .ic{padding:8px 10px;border-radius:10px;background:rgba(0,0,0,0.18);font-size:13px;color:var(--muted)}
+    .skill-name{width:130px;color:var(--muted);font-size:14px}
+    .bar{flex:1;height:12px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:999px;transition:width 1000ms cubic-bezier(.2,.9,.3,1)}
+
+    /* terminal card (small) */
+    .terminal{margin-top:14px;padding:12px;border-radius:10px;background:#020617;border:1px solid rgba(255,255,255,0.03);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;color:#bfeeff;font-size:13px}
+    .term-line{white-space:pre-wrap;line-height:1.5;opacity:0.95}
+
+    /* YAML code card */
+    .yaml{background:linear-gradient(180deg,#051127,#07102a);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);font-family:ui-monospace, monospace;color:#d6faff;font-size:13px}
+
+    /* reveal animation */
+    .reveal{opacity:0;transform:translateY(12px);transition:all 700ms cubic-bezier(.2,.9,.3,1)}
+    .reveal.visible{opacity:1;transform:none}
+
     /* footer */
     footer{margin-top:22px;color:var(--muted);text-align:center;font-size:13px}
-    /* reveal animations */
-    .reveal{opacity:0;transform:translateY(14px);transition:all 700ms cubic-bezier(.2,.9,.3,1)}
-    .reveal.visible{opacity:1;transform:none}
-    /* responsive tweaks */
-    @media (max-width:600px){ .logo{width:56px;height:56px;font-size:20px} .hero-right{width:100%} .typewriter{font-size:14px} }
+
+    /* responsive small */
+    @media (max-width:540px){
+      .logo{width:56px;height:56px;font-size:22px}
+      .right{width:100%}
+      .title{font-size:20px}
+    }
   </style>
 </head>
 <body>
-  <!-- background blobs -->
+  <!-- animated blobs -->
   <div class="bg-blobs" aria-hidden="true">
-    <div class="blob" id="b1" style="width:420px;height:420px;left:-80px;top:-60px;background:linear-gradient(135deg,#6cf,#5ee0ff);"></div>
-    <div class="blob" id="b2" style="width:300px;height:300px;right:-80px;bottom:40px;background:linear-gradient(135deg,#7a6cff,#39d0ff);"></div>
-    <div class="blob" id="b3" style="width:180px;height:180px;left:20%;top:60%;background:linear-gradient(135deg,#7af0d8,#7a6cff);"></div>
+    <div class="blob" id="blob1" style="width:520px;height:520px;left:-140px;top:-120px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));"></div>
+    <div class="blob" id="blob2" style="width:340px;height:340px;right:-120px;bottom:20px;background:linear-gradient(135deg,var(--accent-2),#6fe8d6);"></div>
+    <div class="blob" id="blob3" style="width:220px;height:220px;left:16%;top:62%;background:linear-gradient(135deg,#7af0d8,var(--accent-2));"></div>
   </div>
 
   <div class="wrap" id="wrap">
@@ -101,216 +121,255 @@
       <div class="logo">RP</div>
       <div>
         <h1>Rashmik Parmar</h1>
-        <div class="tagline">System Administrator & DevOps Engineer • AWS • Kubernetes • CI/CD • Monitoring</div>
+        <div class="tagline">System Administrator & DevOps Engineer — AWS • Kubernetes • CI/CD • Monitoring</div>
       </div>
+
       <nav>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
-        <a href="Rashmik_Parmar_Resume.pdf" id="resumeLink" target="_blank">Resume</a>
+        <a href="Rashmik_Parmar_Resume.pdf" target="_blank">Resume</a>
       </nav>
     </header>
 
-    <div class="layout" id="layout">
-      <!-- left: hero -->
-      <div class="hero" id="hero">
-        <div class="hero-content">
-          <div class="hero-left">
-            <div class="typewriter" aria-hidden="false">
-              <div id="typeText" style="font-weight:700;font-size:18px"></div>
-              <div class="cursor"></div>
-            </div>
-            <h2 style="margin-top:12px">Automating infrastructure, CI/CD & monitoring for reliable systems</h2>
-            <p class="lead">I build scalable production-ready environments using Docker, Kubernetes (kubeadm & EKS), Jenkins/GitLab CI, Terraform, Ansible, and monitoring stacks (Prometheus + Grafana).</p>
+    <div class="layout">
+      <!-- LEFT: Hero + content -->
+      <main class="hero">
+        <div class="neon-border" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="left">
+            <div class="title">Premium DevOps Portfolio — Infrastructure • Automation • Observability</div>
+            <div class="lead">I design, automate and monitor production systems. Focus: reliable infrastructure, efficient CI/CD, container orchestration, and observability.</div>
 
-            <div class="cta-row">
-              <button class="btn-primary" id="hireBtn">Hire / Contact</button>
-              <button class="btn-ghost" id="downloadBtn">Download Resume</button>
+            <!-- dynamic type -->
+            <div style="margin-top:14px;font-family:ui-monospace,monospace;display:flex;align-items:center;gap:10px">
+              <div style="font-weight:700;color:var(--accent-1);font-size:15px" id="dynamicType"></div>
+              <div style="width:2px;height:18px;background:var(--accent-1);animation:blink 900ms steps(2,end) infinite"></div>
             </div>
 
-            <div class="grid reveal" id="gridIntro">
+            <div class="cta">
+              <button class="btn-primary" id="contactBtn">Hire / Contact</button>
+              <button class="btn-ghost" id="resumeBtn">Download Resume</button>
+            </div>
+
+            <div class="grid reveal" id="featuresGrid" style="margin-top:18px">
               <div class="proj">
                 <h4>CI/CD & Automation</h4>
-                <p>Jenkins & GitLab pipelines, SonarQube integration, Ansible deploys and Terraform infra.</p>
+                <p>Jenkins, GitLab CI, SonarQube, Ansible & Terraform for infra as code and repeatable deployments.</p>
               </div>
               <div class="proj">
                 <h4>Containers & K8s</h4>
-                <p>Docker containerization, kubeadm cluster setup, EKS deployments & Helm charts.</p>
+                <p>Dockerized apps, kubeadm cluster setup & EKS production deployments with Helm and autoscaling.</p>
+              </div>
+              <div class="proj">
+                <h4>Monitoring & Observability</h4>
+                <p>Prometheus, Grafana, Node Exporter, Alertmanager and proactive alerting (CPU/memory/network).</p>
+              </div>
+              <div class="proj">
+                <h4>Cloud & Infrastructure</h4>
+                <p>AWS: EC2, S3, RDS, ECR/EKS. Cost-aware infra design and CloudWatch dashboards.</p>
               </div>
             </div>
 
-            <div class="skills reveal" id="skills">
-              <div style="margin-top:12px;font-weight:700">Key Skills</div>
-              <div class="skill-row"><div class="skill-name">AWS & Cloud</div><div class="bar"><i data-width="85%"></i></div></div>
-              <div class="skill-row"><div class="skill-name">Docker / Kubernetes</div><div class="bar"><i data-width="88%"></i></div></div>
+            <div class="skills reveal" id="skills" style="margin-top:16px">
+              <div style="font-weight:700">Skills</div>
+              <div class="skill-row"><div class="skill-name">AWS & Cloud</div><div class="bar"><i data-width="88%"></i></div></div>
+              <div class="skill-row"><div class="skill-name">Docker & K8s</div><div class="bar"><i data-width="90%"></i></div></div>
               <div class="skill-row"><div class="skill-name">CI/CD</div><div class="bar"><i data-width="86%"></i></div></div>
             </div>
+
+            <!-- terminal-like snippet -->
+            <div class="terminal reveal" style="margin-top:16px">
+              <div class="term-line">$ kubectl get pods -n production</div>
+              <div class="term-line">NAME                       READY   STATUS    RESTARTS   AGE</div>
+              <div class="term-line">web-5d7c9c8f                1/1     Running   0          3d</div>
+              <div class="term-line">api-6f5d8b4b                1/1     Running   0          3d</div>
+              <div style="height:6px"></div>
+              <div class="term-line">$ terraform plan -target=module.ec2</div>
+              <div class="term-line">Plan: 2 to add, 0 to change, 0 to destroy</div>
+            </div>
+
           </div>
 
-          <div class="hero-right">
-            <div class="glass-card" id="cardMain" tabindex="0">
+          <!-- RIGHT: Glass card (contact & quick stats) -->
+          <aside class="right">
+            <div class="glass-card reveal" id="cardMain">
               <div style="display:flex;justify-content:space-between;align-items:center">
                 <div>
-                  <div style="font-size:13px;color:var(--muted)">Location</div>
-                  <div style="font-weight:700;margin-top:6px">Vadodara, Gujarat, India</div>
+                  <div class="muted">Location</div>
+                  <div class="stat">Vadodara, Gujarat</div>
                 </div>
                 <div style="text-align:right">
-                  <div style="font-size:13px;color:var(--muted)">Experience</div>
-                  <div style="font-weight:700;margin-top:6px">3+ years</div>
+                  <div class="muted">Experience</div>
+                  <div class="stat">3+ years</div>
                 </div>
               </div>
+
               <div style="height:12px"></div>
-              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap" class="icon-row">
-                <div class="ic">AWS</div><div class="ic">Docker</div><div class="ic">Kubernetes</div><div class="ic">Jenkins</div><div class="ic">Grafana</div>
+
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+                <div style="padding:8px 10px;border-radius:10px;background:linear-gradient(90deg, rgba(77,240,255,0.06), rgba(138,99,255,0.04));font-size:13px">AWS</div>
+                <div style="padding:8px 10px;border-radius:10px;background:rgba(0,0,0,0.16);font-size:13px">Docker</div>
+                <div style="padding:8px 10px;border-radius:10px;background:rgba(0,0,0,0.16);font-size:13px">Kubernetes</div>
+                <div style="padding:8px 10px;border-radius:10px;background:rgba(0,0,0,0.16);font-size:13px">Prometheus</div>
               </div>
-              <div style="margin-top:14px">
-                <div style="font-size:13px;color:var(--muted)">Contact</div>
-                <div style="margin-top:8px;font-weight:700">+91-7046829916</div>
+
+              <div style="margin-top:12px">
+                <div class="muted">Contact</div>
+                <div style="margin-top:6px;font-weight:700">+91-7046829916</div>
                 <div style="margin-top:6px"><a href="mailto:rashmikparmar11897@gmail.com">rashmikparmar11897@gmail.com</a></div>
-                <div style="margin-top:8px"><a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></div>
+                <div style="margin-top:6px"><a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- right column: smaller dashboard & links -->
-      <aside class="right" style="display:flex;flex-direction:column;gap:12px">
-        <div class="glass-card reveal" style="padding:12px">
-          <h3 style="margin:0 0 8px">Live Snapshot</h3>
-          <div style="display:flex;gap:10px">
-            <div style="flex:1">
-              <div style="font-size:13px;color:var(--muted)">CPU</div>
-              <div style="height:8px;margin-top:6px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden">
-                <div id="cpu" style="width:30%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))"></div>
+            <div class="glass-card reveal" style="padding:12px">
+              <h3 style="margin:0 0 8px">Featured Projects</h3>
+              <div class="muted" style="font-size:14px">
+                <strong>Cloudracing</strong> — EC2, RDS (SSL), Laravel, CloudWatch dashboards.<br><br>
+                <strong>GetMyCigar</strong> — Magento: Nginx, Elasticsearch, autoscaling, logging.<br><br>
+                <a href="#projects" style="color:var(--accent-1)">See all projects →</a>
               </div>
-              <div style="font-size:12px;color:var(--muted);margin-top:6px">Mock metrics to show capability</div>
             </div>
-            <div style="width:120px;text-align:right">
-              <div style="font-size:13px;color:var(--muted)">Services</div>
-              <div style="margin-top:8px"><span style="display:inline-block;width:10px;height:10px;background:#33d69f;border-radius:999px;margin-right:8px"></span>Jenkins</div>
-              <div style="margin-top:6px"><span style="display:inline-block;width:10px;height:10px;background:#ffb86b;border-radius:999px;margin-right:8px"></span>SonarQube</div>
+
+            <div class="glass-card reveal yaml" style="padding:12px">
+<pre style="margin:0;line-height:1.5">
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: whizzq-deploy
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: web
+        image: myrepo/whizzq:latest
+</pre>
             </div>
-          </div>
+          </aside>
         </div>
+      </main>
 
-        <div class="glass-card reveal" id="projects" style="padding:12px">
-          <h3 style="margin:0 0 8px">Featured Projects</h3>
-          <div style="font-size:14px;color:var(--muted)">
-            <strong>Cloudracing (AWS)</strong> — EC2, RDS (SSL), Laravel, CloudWatch. <br><br>
-            <strong>GetMyCigar</strong> — Magento on EC2, Elasticsearch, autoscaling, logs. <br><br>
-            <strong>Kentron (GCP)</strong> — Node.js CI/CD, Docker → GCP. <br><br>
-            <a href="#experience" style="color:var(--accent)">See more →</a>
-          </div>
-        </div>
-
-        <div class="glass-card reveal" style="padding:12px">
-          <h3 style="margin:0 0 8px">Education</h3>
-          <div style="font-size:14px;color:var(--muted)">
-            BE (Computer Engineering), KJ Institute — 2023 (GPA: 7.83)<br>
-            Diploma (Computer Engineering), RMS Polytechnic — 2019 (7.89)
-          </div>
-        </div>
-      </aside>
+      <!-- RIGHT column small on mobile -->
     </div>
 
-    <!-- experience & contact sections -->
-    <section id="experience" class="card reveal">
+    <!-- Projects section -->
+    <section id="projects" class="reveal" style="margin-top:18px">
+      <h3>Projects & Highlights</h3>
+      <div class="grid" style="margin-top:12px">
+        <div class="proj">
+          <h4>CI/CD Pipeline — React → Docker → Jenkins</h4>
+          <p>Automated build, image publish, test, and deploy on EC2 via Jenkins pipeline + Ansible.</p>
+        </div>
+        <div class="proj">
+          <h4>Kubernetes Deployments — Kubeadm & EKS</h4>
+          <p>Cluster bootstrapping, Helm charts, HPA, and service mesh readiness testing.</p>
+        </div>
+        <div class="proj">
+          <h4>Monitoring — Prometheus & Grafana</h4>
+          <p>End-to-end monitoring with Node Exporter, Blackbox exporter, dashboards & alerts.</p>
+        </div>
+        <div class="proj">
+          <h4>Magento on AWS — GetMyCigar</h4>
+          <p>Magento deployment with Elasticsearch, Nginx, autoscaling & log aggregation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="card reveal" style="margin-top:18px">
       <h3>Experience</h3>
-      <p style="color:var(--muted);margin-top:6px"><strong>SVAAPTA IT-ALLY SOLUTIONS PVT LTD</strong> — System Administrator (Present - July 2022)</p>
-      <ul style="color:var(--muted);margin-top:8px">
-        <li>Managed Linux infra, LDAP & Azure AD; Microsoft 365 admin.</li>
-        <li>Deployed AWS services (EC2, S3, RDS, EKS) and containerized apps with Docker.</li>
-        <li>Built CI/CD pipelines (Jenkins, GitLab) and integrated SonarQube for code quality.</li>
-        <li>Monitoring: Prometheus, Grafana, Node Exporter; set alerts for CPU/memory thresholds.</li>
-        <li>Automated backups and routine tasks using Bash & PowerShell; reduced manual ops by ~40%.</li>
+      <p class="muted" style="margin-top:6px"><strong>SVAAPTA IT-ALLY SOLUTIONS PVT LTD</strong> — System Administrator (Present - July 2022)</p>
+      <ul class="muted" style="margin-top:8px">
+        <li>Managed Linux infra, LDAP & Azure AD, Microsoft 365 admin panel.</li>
+        <li>Deployed & managed AWS services (EC2, S3, RDS, EKS), containerized apps with Docker.</li>
+        <li>CI/CD with Jenkins & GitLab; SonarQube integration; automated deployments via Ansible.</li>
+        <li>Monitoring stack with Prometheus & Grafana; implemented alerting and dashboards.</li>
       </ul>
     </section>
 
-    <section id="contact" class="card reveal">
+    <!-- Contact -->
+    <section id="contact" class="card reveal" style="margin-top:18px">
       <h3>Contact</h3>
-      <p style="color:var(--muted);margin-top:8px">Email: <a href="mailto:rashmikparmar11897@gmail.com">rashmikparmar11897@gmail.com</a></p>
-      <p style="color:var(--muted)">Phone: +91-7046829916</p>
-      <p style="color:var(--muted)">LinkedIn: <a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></p>
+      <p class="muted" style="margin-top:8px">Email: <a href="mailto:rashmikparmar11897@gmail.com">rashmikparmar11897@gmail.com</a></p>
+      <p class="muted">Phone: +91-7046829916</p>
+      <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></p>
     </section>
 
     <footer>
-      <div style="color:var(--muted)">Built with Glassmorphism 3D + Motion • Want GitHub Pages-specific tweaks or a React version with real telemetry? Ask and I'll generate it.</div>
+      <div class="muted">Built with a Cyber Purple + Neon Blue theme • Glassmorphism & premium DevOps styling.</div>
     </footer>
   </div>
 
   <script>
-    /* ---------------------------
-       Typewriter intro
-       --------------------------- */
+    /* -------------------------
+       Type / dynamic typewriter
+       ------------------------- */
     (function(){
-      const texts = ["DevOps Engineer", "Kubernetes • Docker • AWS", "CI/CD • Monitoring • Automation"];
-      const el = document.getElementById('typeText');
-      let ti = 0, idx = 0;
-      async function type(txt){
+      const lines = ["DevOps Engineer", "Kubernetes • Docker • AWS", "CI/CD • Terraform • Observability"];
+      const el = document.getElementById('dynamicType');
+      let i = 0;
+      async function typeAndPause(txt){
         el.textContent = '';
-        for(let i=0;i<txt.length;i++){ el.textContent += txt[i]; await new Promise(r=>setTimeout(r, 40)); }
+        for(let k=0;k<txt.length;k++){ el.textContent += txt[k]; await new Promise(r=>setTimeout(r, 35)); }
+        await new Promise(r=>setTimeout(r, 900));
       }
-      async function loop(){
+      (async function loop(){
         while(true){
-          await type(texts[idx]);
-          await new Promise(r=>setTimeout(r, 900));
-          idx = (idx+1) % texts.length;
+          await typeAndPause(lines[i]);
+          i = (i+1) % lines.length;
         }
-      }
-      loop();
+      })();
     })();
 
-    /* ---------------------------
-       Floating blobs parallax (mouse)
-       --------------------------- */
+    /* -------------------------
+       Blob parallax & subtle float
+       ------------------------- */
     (function(){
-      const wrap = document.getElementById('wrap');
-      const b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
+      const b1 = document.getElementById('blob1'), b2 = document.getElementById('blob2'), b3 = document.getElementById('blob3');
       let w = innerWidth, h = innerHeight;
-      function onMove(e){
-        const cx = e.clientX - w/2, cy = e.clientY - h/2;
-        b1.style.transform = `translate3d(${cx*0.03}px,${cy*0.02}px,0) scale(1.02)`;
-        b2.style.transform = `translate3d(${cx*0.02}px,${cy*0.03}px,0) scale(1.01)`;
-        b3.style.transform = `translate3d(${cx*0.04}px,${cy*0.015}px,0) scale(1.03)`;
-      }
-      window.addEventListener('mousemove', onMove);
       window.addEventListener('resize', ()=>{ w=innerWidth; h=innerHeight });
-      // subtle slow motion when idle
-      let t = 0;
+      window.addEventListener('mousemove', (e)=>{
+        const cx = (e.clientX - w/2)/w;
+        const cy = (e.clientY - h/2)/h;
+        b1.style.transform = `translate3d(${cx*40}px,${cy*30}px,0) scale(1.03)`;
+        b2.style.transform = `translate3d(${cx*28}px,${cy*40}px,0) scale(1.02)`;
+        b3.style.transform = `translate3d(${cx*48}px,${cy*18}px,0) scale(1.04)`;
+      });
+      // idle float
+      let t=0;
       function floatLoop(){
-        t+=0.004;
-        b1.style.opacity = 0.75 + Math.sin(t)/6;
-        b2.style.opacity = 0.7 + Math.cos(t)/8;
-        b3.style.opacity = 0.65 + Math.sin(t*1.3)/7;
+        t += 0.006;
+        b1.style.opacity = 0.78 + Math.sin(t)/8;
+        b2.style.opacity = 0.72 + Math.cos(t*1.2)/9;
+        b3.style.opacity = 0.68 + Math.sin(t*1.5)/10;
         requestAnimationFrame(floatLoop);
       }
       floatLoop();
     })();
 
-    /* ---------------------------
-       Card tilt based on pointer
-       --------------------------- */
+    /* -------------------------
+       Card tilt micro-interaction
+       ------------------------- */
     (function(){
       const card = document.getElementById('cardMain');
       if(!card) return;
-      function mover(e){
+      function onMove(e){
         const r = card.getBoundingClientRect();
         const cx = r.left + r.width/2, cy = r.top + r.height/2;
-        const dx = (e.clientX - cx) / r.width;
-        const dy = (e.clientY - cy) / r.height;
-        const rx = -dy * 10, ry = dx * 10;
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px)`;
+        const dx = (e.clientX - cx)/r.width, dy = (e.clientY - cy)/r.height;
+        const rx = -dy * 8, ry = dx * 8;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
       }
       function reset(){ card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)'; }
-      card.addEventListener('mousemove', mover);
+      card.addEventListener('mousemove', onMove);
       card.addEventListener('mouseleave', reset);
       card.addEventListener('mouseenter', ()=> card.style.transition = 'transform 120ms');
     })();
 
-    /* ---------------------------
-       Reveal on scroll
-       --------------------------- */
+    /* -------------------------
+       Reveal on scroll & animate bars
+       ------------------------- */
     (function(){
       const obs = new IntersectionObserver((entries)=>{
         entries.forEach(en=>{
@@ -318,7 +377,7 @@
         });
       }, {threshold:0.12});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-      // animate skill bars when visible
+
       const skillObserver = new IntersectionObserver((entries)=>{
         entries.forEach(en=>{
           if(en.isIntersecting){
@@ -333,24 +392,16 @@
       if(s) skillObserver.observe(s);
     })();
 
-    /* ---------------------------
-       Buttons & resume
-       --------------------------- */
-    document.getElementById('downloadBtn').addEventListener('click', ()=> window.open('Rashmik_Parmar_Resume.pdf', '_blank'));
-    document.getElementById('hireBtn').addEventListener('click', ()=> location.href = 'mailto:rashmikparmar11897@gmail.com');
+    /* -------------------------
+       Buttons
+       ------------------------- */
+    document.getElementById('resumeBtn').addEventListener('click', ()=> window.open('Rashmik_Parmar_Resume.pdf', '_blank'));
+    document.getElementById('contactBtn').addEventListener('click', ()=> location.href = 'mailto:rashmikparmar11897@gmail.com');
 
-    /* ---------------------------
-       Small animated mock metrics
-       --------------------------- */
-    (function(){
-      const cpu = document.getElementById('cpu');
-      function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min }
-      function update(){
-        const v = rand(26,72);
-        cpu.style.width = v + '%';
-      }
-      update(); setInterval(update, 4500);
-    })();
+    /* -------------------------
+       Small accessibility: focus
+       ------------------------- */
+    document.querySelectorAll('.proj').forEach(p=>p.setAttribute('tabindex', '0'));
   </script>
 </body>
 </html>
