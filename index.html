@@ -1,227 +1,241 @@
-<!--
-DevOps Portfolio - Single-file static site
-File: devops-portfolio.html
-How to use:
-1. Save this file as `index.html` locally.
-2. Open in browser to preview.
-3. To deploy:
-   - GitHub Pages: push to a repo's main branch and enable Pages (root -> index.html).
-   - Netlify/Vercel: drag-and-drop the file or connect the repo.
-4. Customize: search for `<!-- CUSTOMIZE` comments inside the file.
-
-If you want this converted to a React project or WordPress theme, tell me and I'll generate those files.
--->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rashmik — DevOps Engineer</title>
-  <meta name="description" content="DevOps Engineer portfolio — CI/CD, Kubernetes, Docker, AWS, Monitoring" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rashmik Parmar — DevOps Engineer</title>
+  <meta name="description" content="Rashmik Parmar — DevOps Engineer. CI/CD, Kubernetes, Docker, AWS, Monitoring." />
   <style>
     :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#07c; --muted:#98a8c0; --glass: rgba(255,255,255,0.03);
-      --radius:14px; --max-width:1050px;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --bg:#071026; --card:#071428; --muted:#9fb0c8; --accent:#39d0ff; --glass:rgba(255,255,255,0.04);
+      --radius:14px; --maxw:1100px; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
     }
     *{box-sizing:border-box}
-    body{background:linear-gradient(180deg,#071021 0%,var(--bg) 100%); color:#e6eef8; margin:0; -webkit-font-smoothing:antialiased}
-    .wrap{max-width:var(--max-width); margin:36px auto; padding:28px}
-    header{display:flex; gap:24px; align-items:center}
-    .avatar{width:110px;height:110px;border-radius:18px;background:linear-gradient(135deg,var(--accent),#6cf);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124;font-size:42px}
-    h1{margin:0; font-size:28px}
-    p.lead{margin:8px 0 0; color:var(--muted)}
-
-    nav{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
-    a.btn{background:var(--glass); padding:8px 12px; border-radius:12px; color:inherit; text-decoration:none; font-size:14px}
-
-    .grid{display:grid; grid-template-columns: 1fr 360px; gap:22px; margin-top:22px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:var(--radius); box-shadow: 0 4px 18px rgba(2,6,23,0.6);}
-
-    /* left column */
-    .section{margin-bottom:18px}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:#08101a;padding:6px 10px;border-radius:10px;font-size:13px;color:var(--muted)}
-
-    .projects{display:grid;grid-template-columns:1fr;gap:12px}
-    .project{padding:12px;border-radius:12px;background:rgba(255,255,255,0.02)}
-    .project h4{margin:0 0 6px}
-    .project p{margin:0;color:var(--muted);font-size:14px}
-    .project a{display:inline-block;margin-top:8px;text-decoration:none;color:var(--accent)}
-
-    /* right column */
-    .sidebar h3{margin-top:0}
-    .meta{font-size:14px;color:var(--muted)}
-    .contact a{display:block;margin-top:8px;color:var(--accent);text-decoration:none}
-
-    footer{margin-top:28px;color:var(--muted);text-align:center}
-
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#051023 0%,var(--bg) 100%);color:#e8f2fb}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:var(--maxw);margin:28px auto;padding:20px}
+    /* canvas background */
+    #bgcanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.9}
+    header{display:flex;align-items:center;gap:20px;z-index:10;position:relative}
+    .logo{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6cf);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022; font-size:24px}
+    h1{margin:0;font-size:22px}
+    .lead{color:var(--muted);margin-top:6px}
+    nav{margin-left:auto;display:flex;gap:10px;align-items:center}
+    nav a.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);font-size:13px}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center;margin-top:18px;position:relative;z-index:5}
+    .intro{padding:22px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);box-shadow: 0 10px 30px rgba(2,8,20,0.6)}
+    .intro h2{margin:0 0 8px;font-size:28px}
+    .intro p{margin:0;color:var(--muted)}
+    .cta{margin-top:14px;display:flex;gap:10px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#6cf);color:#021; padding:10px 14px;border-radius:12px;font-weight:600;border:none}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border-radius:12px}
+    /* 3D hero card */
+    .card-3d{width:100%;height:260px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:20px;transform-style:preserve-3d;transition:transform 300ms cubic-bezier(.2,.9,.3,1);box-shadow:0 12px 40px rgba(2,6,20,0.6)}
+    .card-3d .tag{background:rgba(0,0,0,0.25);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);display:inline-block;margin-bottom:12px}
+    .card-3d h3{margin:0 0 8px}
+    .card-3d p{margin:0;color:var(--muted)}
+    /* projects grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .proj{border-radius:14px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));transform:translateZ(0);transition:transform 220ms, box-shadow 220ms}
+    .proj h4{margin:0 0 6px}
+    .proj p{margin:0;color:var(--muted);font-size:14px}
+    .proj:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 40px rgba(2,8,20,0.6)}
+    /* skill bars */
+    .skills{display:flex;flex-direction:column;gap:10px}
+    .skill-row{display:flex;align-items:center;gap:12px}
+    .skill-name{width:120px;color:var(--muted);font-size:14px}
+    .bar{flex:1;height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#6cf);border-radius:999px;transition:width 1.2s ease}
+    /* footer */
+    footer{margin-top:30px;color:var(--muted);text-align:center;padding-bottom:40px}
+    /* reveal animations */
+    .reveal{opacity:0;transform:translateY(12px);transition:all 700ms ease}
+    .reveal.visible{opacity:1;transform:none}
     /* responsive */
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .avatar{width:88px;height:88px;font-size:34px}
-    }
+    @media (max-width:980px){.hero{grid-template-columns:1fr} .grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr} nav{display:none} .card-3d{height:220px}}
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <!-- canvas background -->
+  <canvas id="bgcanvas"></canvas>
+
+  <div class="container">
     <header>
-      <div class="avatar">RP</div>
+      <div class="logo">RP</div>
       <div>
-        <h1>Rashmik Parmar — DevOps & System Administrator</h1>
-        <p class="lead">System Administrator & DevOps Engineer with 3+ years of experience in AWS, Linux, CI/CD, Docker, Kubernetes and Monitoring.</p>
-        <nav>
-          <a class="btn" href="#projects">Projects</a>
-          <a class="btn" href="#skills">Skills</a>
-          <a class="btn" href="#contact">Contact</a>
-          <a class="btn" href="#resume">Resume</a>
-        </nav>
+        <h1>Rashmik Parmar</h1>
+        <div class="lead">System Administrator & DevOps Engineer • AWS • Kubernetes • CI/CD • Monitoring</div>
       </div>
+      <nav>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#skills">Skills</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#resume">Resume</a>
+      </nav>
     </header>
 
-    <div class="grid">
-      <main>
-        <section class="card section" id="about">
-          <h2>About Me</h2>
-          <p class="meta">Highly skilled System Administrator & DevOps Engineer with 3+ years of experience in managing Linux-based environments, AWS cloud, automation (Bash/PowerShell), CI/CD pipelines (Jenkins, GitLab, GitHub), Docker, Kubernetes, monitoring (Prometheus + Grafana), and securing infrastructure.</p>
-        </section>
-
-        <section class="card section" id="experience">
-          <h2>Professional Experience</h2>
-          <div class="project">
-            <h4>System Administrator — SVAAPTA IT-ALLY SOLUTIONS PVT LTD</h4>
-            <p class="meta">Present - July 2022</p>
-            <ul>
-              <li>Managed Linux infrastructure and supported 50+ users; administered LDAP and Azure AD for user management.</li>
-              <li>Administered Microsoft 365 and resolved Linux issues in staging and production environments.</li>
-              <li>Deployed and managed AWS services (EC2, S3, RDS, EKS) integrated with Docker for scalable deployments.</li>
-              <li>Set up Grafana dashboards with Prometheus and Node Exporter; implemented alerting and performance tuning.</li>
-              <li>Built CI/CD pipelines using GitLab and Jenkins; integrated SonarQube for static code analysis.</li>
-              <li>Configured and secured Apache/Nginx with SSL using Nginx Proxy Manager; improved uptime to 99.9%.</li>
-              <li>Automated backups, monitoring, and networking tasks—reduced manual work by ~40% and deployment time by ~60%.</li>
-            </ul>
-          </div>
-
-          <div class="project">
-            <h4>Key Projects & Responsibilities</h4>
-            <ul>
-              <li>Cloudracing (AWS): EC2, RDS with SSL, Laravel setup, CloudWatch dashboards.</li>
-              <li>GetMyCigar (AWS): Magento on EC2 with Nginx, Elasticsearch, SSL, autoscaling and monitoring.</li>
-              <li>Kentron (GCP): Containerized Node.js app, GitHub→GCP CI/CD pipeline.</li>
-              <li>WhizzQ (AWS): Docker deployment, load balancer, MariaDB upgrades, logging and monitoring.</li>
-              <li>Kubernetes: Kubeadm cluster setup and EKS deployments (SuiteCRM, other apps).</li>
-              <li>Monitoring: Prometheus, Grafana, Node Exporter, Blackbox Exporter, Alertmanager rules (CPU alerts).</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="card section" id="projects">
-          <h2>Featured Projects</h2>
-          <div class="projects">
-            <article class="project">
-              <h4>Cloudracing Project – AWS</h4>
-              <p>EC2, RDS with SSL, Laravel setup, Amazon Linux dependencies, CloudWatch dashboard creation.</p>
-            </article>
-            <article class="project">
-              <h4>GetMyCigar – AWS Magento Deployment</h4>
-              <p>Nginx, Elasticsearch, Magento setup with SSL, autoscaling, cloudwatch monitoring.</p>
-            </article>
-            <article class="project">
-              <h4>Kentron – GCP CI/CD</h4>
-              <p>Node.js project containerized, GitHub → GCP pipeline setup, automated deployment.</p>
-            </article>
-            <article class="project">
-              <h4>WhizzQ – AWS Production Setup</h4>
-              <p>Docker deployment, load balancer, MariaDB upgrade, log monitoring, CPU alerts.</p>
-            </article>
-            <article class="project">
-              <h4>Node.js Application – Jenkins CI/CD</h4>
-              <p>Automated build-test-deploy pipeline using Jenkins.</p>
-            </article>
-            <article class="project">
-              <h4>PHP 3‑Tier Application – AWS + Jenkins</h4>
-              <p>Frontend + Backend + Database on EC2 & RDS, CI/CD automation.</p>
-            </article>
-            <article class="project">
-              <h4>Kubernetes Deployments – Kubeadm & EKS</h4>
-              <p>SuiteCRM containerized, deployed on Kubeadm cluster & EKS using ECR images.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="card section" id="blog">
-          <h2>Writeups / How-tos</h2>
-          <ul>
-            <li><strong>How I set up Jenkins pipeline for a React app</strong> — Steps, Jenkinsfile, Ansible deploy playbook.</li>
-            <li><strong>Monitoring 50 servers with Prometheus</strong> — Docker Compose, scrape configs, Alertmanager rules.</li>
-            <li><strong>Kubernetes kubeadm cheatsheet</strong> — Commands to init master, join workers, common fixes.</li>
-          </ul>
-        </section>
-
-      </main>
-
-      <aside class="card sidebar">
-        <div class="section">
-          <h3 id="skills">Skills</h3>
-          <div class="skills">
-            <span class="skill">AWS (EC2, RDS, S3, EKS, ECS, ECR)</span>
-            <span class="skill">GCP</span>
-            <span class="skill">Docker / Docker Compose</span>
-            <span class="skill">Kubernetes (Kubeadm / EKS)</span>
-            <span class="skill">Jenkins</span>
-            <span class="skill">GitLab CI/CD</span>
-            <span class="skill">GitHub</span>
-            <span class="skill">SonarQube</span>
-            <span class="skill">Prometheus</span>
-            <span class="skill">Grafana</span>
-            <span class="skill">Node Exporter / Blackbox Exporter</span>
-            <span class="skill">MySQL / MariaDB / PostgreSQL / Aurora</span>
-            <span class="skill">Linux, Ubuntu, CentOS, RedHat</span>
-            <span class="skill">Nginx / Apache</span>
-            <span class="skill">Bash / Shell / PowerShell</span>
-            <span class="skill">Networking: DNS, DHCP, VPN, Firewall, SSL</span>
-            <span class="skill">VMware / Hyper-V / VirtualBox</span>
-          </div>
+    <section class="hero">
+      <div class="intro reveal" id="intro">
+        <h2>DevOps Engineer — Build • Automate • Monitor</h2>
+        <p style="margin-top:10px;color:var(--muted)">I architect and maintain scalable infrastructure, automate CI/CD pipelines and ensure highly available production systems.</p>
+        <div class="cta">
+          <a class="btn-primary" href="#contact">Hire / Contact</a>
+          <a class="btn-ghost" id="downloadResume" href="Rashmik_Parmar_Resume.pdf" download>Download Resume</a>
         </div>
 
-        <div class="section">
-          <h3>Quick Info</h3>
-          <p class="meta">Location: India</p>
-          <p class="meta" id="resume">Resume: <a href="#" style="color:var(--accent)">Download (PDF)</a></p>
+        <div style="margin-top:18px" class="skills">
+          <div class="skill-row"><div class="skill-name">CI/CD</div><div class="bar"><i data-width="85%"></i></div></div>
+          <div class="skill-row"><div class="skill-name">Docker & K8s</div><div class="bar"><i data-width="88%"></i></div></div>
+          <div class="skill-row"><div class="skill-name">Monitoring</div><div class="bar"><i data-width="82%"></i></div></div>
         </div>
+      </div>
 
-        <div class="section contact" id="contact">
-          <h3>Contact</h3>
-          <p class="meta">Email: <a href="mailto:rashmikparmar11897@gmail.com" class="contact-link">rashmik@example.com</a></p>
-          <p class="meta">LinkedIn: <a href="#" class="contact-link">https://www.linkedin.com/in/rashmik-parmar-173403178/</a></p>
-          <p class="meta">GitHub: <a href="#" class="contact-link">#</a></p>
+      <div class="card-3d" id="card3d">
+        <span class="tag">DevOps • Linux • AWS</span>
+        <h3>3D-like Interactive Card</h3>
+        <p style="color:var(--muted)">Move your mouse over this card — it reacts with a 3D tilt and mild parallax. Use this as your hero highlight.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="reveal" style="margin-top:26px">
+      <h2>Featured Projects</h2>
+      <div class="grid" style="margin-top:12px">
+        <div class="proj">
+          <h4>CI/CD Pipeline — React → Docker → Jenkins</h4>
+          <p>Automated build, image publish and deploy to EC2 using Jenkins + Ansible.</p>
         </div>
-
-        <div class="section">
-          <h3>Availability</h3>
-          <p class="meta">Open to freelance & full-time roles. Immediate joiner for DevOps Engineer positions.</p>
+        <div class="proj">
+          <h4>Kubernetes — Kubeadm & EKS</h4>
+          <p>Cluster setup (kubeadm) and EKS deployments using ECR images and Helm charts.</p>
         </div>
+        <div class="proj">
+          <h4>Monitoring — Prometheus & Grafana</h4>
+          <p>Monitoring stack, alerting rules and 50+ Node Exporter integrations.</p>
+        </div>
+      </div>
+    </section>
 
-      </aside>
-    </div>
+    <section id="skills" class="reveal" style="margin-top:22px">
+      <h2>Skills & Tools</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <div class="proj" style="flex:1 1 320px"><h4>AWS & Cloud</h4><p class="meta">EC2, S3, RDS, EKS, IAM, CloudWatch</p></div>
+        <div class="proj" style="flex:1 1 320px"><h4>Containers</h4><p class="meta">Docker, Compose, Kubernetes (kubeadm, EKS)</p></div>
+        <div class="proj" style="flex:1 1 320px"><h4>CI/CD & Quality</h4><p class="meta">Jenkins, GitLab CI, SonarQube</p></div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal" style="margin-top:22px">
+      <h2>Contact</h2>
+      <p class="meta">Email: <a href="mailto:rashmikparmar11897@gmail.com">rashmikparmar11897@gmail.com</a> • LinkedIn: <a href="https://www.linkedin.com/in/rashmik-parmar-173403178/" target="_blank">linkedin.com/in/rashmik-parmar-173403178</a></p>
+    </section>
 
     <footer>
-      <p>Built with ❤️ for DevOps — Customize this template or ask me to convert to React/WordPress.</p>
+      <p>Built with ❤ • Interactive 3D-like effects (no heavy libs) — Customize further on request.</p>
     </footer>
   </div>
 
   <script>
-    // Small script: smooth scroll for nav
+    /* -------------------------
+       Background particles canvas
+       ------------------------- */
+    (function(){
+      const canvas = document.getElementById('bgcanvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = innerWidth;
+      let h = canvas.height = innerHeight;
+      const TAU = Math.PI*2;
+      let particles = [];
+      const PCOUNT = Math.round((w*h)/90000); // density
+      function rand(min,max){return Math.random()*(max-min)+min}
+      function init(){
+        particles = [];
+        for(let i=0;i<PCOUNT;i++){
+          particles.push({
+            x: rand(0,w), y: rand(0,h), r: rand(0.6,2.4),
+            vx: rand(-0.25,0.25), vy: rand(-0.2,0.2),
+            hue: rand(185,210), life: rand(0.2,1)
+          });
+        }
+      }
+      function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;init()}
+      window.addEventListener('resize', resize);
+      init();
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        // gradient background subtle
+        const g = ctx.createLinearGradient(0,0,0,h);
+        g.addColorStop(0, 'rgba(6,12,25,0.6)');
+        g.addColorStop(1, 'rgba(4,8,18,0.6)');
+        ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+        for(const p of particles){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x< -50) p.x=w+50; if(p.x> w+50) p.x=-50;
+          if(p.y< -50) p.y=h+50; if(p.y> h+50) p.y=-50;
+          ctx.beginPath();
+          ctx.fillStyle = `hsla(${p.hue},70%,60%,${0.08 + p.life*0.2})`;
+          ctx.arc(p.x, p.y, p.r, 0, TAU);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+      // subtle parallax on mouse
+      let mx=0,my=0;
+      window.addEventListener('mousemove', e=>{mx = (e.clientX - w/2)/w; my = (e.clientY - h/2)/h; for(let i=0;i<particles.length;i++){particles[i].x += mx*0.3; particles[i].y += my*0.2}})
+    })();
+
+    /* -------------------------
+       3D tilt for hero card
+       ------------------------- */
+    (function(){
+      const card = document.getElementById('card3d');
+      if(!card) return;
+      const rect = ()=>card.getBoundingClientRect();
+      function onMove(e){
+        const r = rect();
+        const cx = r.left + r.width/2;
+        const cy = r.top + r.height/2;
+        const dx = (e.clientX - cx);
+        const dy = (e.clientY - cy);
+        const rx = (-dy / r.height) * 12; // rotateX
+        const ry = (dx / r.width) * 12;   // rotateY
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+      }
+      function reset(){ card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)'; }
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', reset);
+      card.addEventListener('mouseenter', ()=>{card.style.transition = 'transform 120ms';});
+    })();
+
+    /* -------------------------
+       Reveal on scroll
+       ------------------------- */
+    (function(){
+      const els = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting) en.target.classList.add('visible');
+        });
+      }, {threshold:0.12});
+      els.forEach(el=>obs.observe(el));
+      // animate skill bars
+      window.addEventListener('load', ()=>{document.querySelectorAll('.bar > i').forEach(i=>{setTimeout(()=>i.style.width = i.dataset.width || '70%',200)})});
+    })();
+
+    /* -------------------------
+       Smooth anchor scroll
+       ------------------------- */
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
-        const href=a.getAttribute('href');
-        if(href.length>1){
+        const id = a.getAttribute('href');
+        if(id.length>1){
           e.preventDefault();
-          const el=document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
         }
-      })
-    })
+      });
+    });
   </script>
 </body>
 </html>
